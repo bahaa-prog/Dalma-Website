@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { preload } from "react-dom";
 import { Calendar, ChevronRight } from "lucide-react";
-import { NEWS } from "@/data/news";
+import { NEWS, NEWS_BY_ID } from "@/data/news";
 import "./article.css";
 
 // Every article is pre-rendered at build time; unknown ids → 404.
@@ -18,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const article = NEWS.find((n) => n.id === Number(id));
+  const article = NEWS_BY_ID.get(Number(id));
   return {
     title: article
       ? `${article.title} — مدينة الدلما الإنسانية`
@@ -33,8 +34,11 @@ export default async function ArticlePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const article = NEWS.find((n) => n.id === Number(id));
+  const article = NEWS_BY_ID.get(Number(id));
   if (!article) notFound();
+
+  // Cover image is this page's LCP element; hint the browser early.
+  preload(article.image, { as: "image" });
 
   return (
     <div style={{ paddingTop: "6rem", background: "white", minHeight: "100vh" }}>

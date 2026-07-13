@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { preload } from "react-dom";
 import {
   Accessibility,
   Activity,
@@ -21,11 +22,15 @@ import {
   Users,
 } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
-import { NEWS } from "@/data/news";
+import { NEWS_BY_ID } from "@/data/news";
 
-const homeNews = [1, 2, 3].map((id) => NEWS.find((n) => n.id === id)!);
+const homeNews = [1, 2, 3].map((id) => NEWS_BY_ID.get(id)!);
 
 export default function HomePage() {
+  // Hero image is the page's LCP element; hint the browser before it
+  // reaches the <img> tag deep in the DOM.
+  preload("/img/dalma_building.webp", { as: "image" });
+
   return (
     <>
       {/* ═══════════════════════ HERO ═══════════════════════ */}

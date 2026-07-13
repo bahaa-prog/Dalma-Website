@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
+import { preconnect } from "react-dom";
 import "./globals.css";
 
 const cairo = Cairo({
@@ -20,6 +21,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // News images (home, listing, articles) all load from Unsplash — open
+  // the connection early instead of waiting for the first <img> to be found.
+  preconnect("https://images.unsplash.com");
+
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <body>{children}</body>

@@ -154,3 +154,9 @@ export const NEWS: Article[] = [
     `,
   },
 ];
+
+// Built once at module load; every id-based lookup (home page, article
+// page + its metadata) reuses this instead of re-scanning the array.
+export const NEWS_BY_ID: ReadonlyMap<number, Article> = new Map(
+  NEWS.map((article) => [article.id, article])
+);
