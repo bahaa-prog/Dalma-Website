@@ -3,8 +3,9 @@
 # CLAUDE.md
 
 React (Next.js) version of the institutional website for **مدينة الدلما الإنسانية** — Arabic RTL.
-Migrated 1:1 from the plain HTML/CSS/JS site in `~/Desktop/Dalma_Website` (that folder is the
-untouched fallback in case management returns to the Odoo website-module approach — never modify it).
+Migrated 1:1 from the plain HTML/CSS/JS site in the parent folder `~/Desktop/Dalma_Website` (the
+original files there are the untouched fallback in case management returns to the Odoo
+website-module approach — never modify them; all active work happens in this subfolder).
 
 ## Stack
 
