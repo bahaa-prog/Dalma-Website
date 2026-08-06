@@ -3,23 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { preload } from "react-dom";
 import { Calendar, ChevronRight } from "lucide-react";
-import { NEWS, NEWS_BY_ID } from "@/data/news";
+import { formatArticleDate, getPublishedArticleBySlug } from "@/lib/news";
 import "./article.css";
-
-// Every article is pre-rendered at build time; unknown ids → 404.
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return NEWS.map((article) => ({ id: String(article.id) }));
-}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
-  const article = NEWS_BY_ID.get(Number(id));
+  const { slug } = await params;
+  const article = await getPublishedArticleBySlug(decodeURIComponent(slug));
   return {
     title: article
       ? `${article.title} — مدينة الدلما الإنسانية`
@@ -31,14 +24,14 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
-  const article = NEWS_BY_ID.get(Number(id));
+  const { slug } = await params;
+  const article = await getPublishedArticleBySlug(decodeURIComponent(slug));
   if (!article) notFound();
 
   // Cover image is this page's LCP element; hint the browser early.
-  preload(article.image, { as: "image" });
+  if (article.image) preload(article.image, { as: "image" });
 
   return (
     <div style={{ paddingTop: "6rem", background: "white", minHeight: "100vh" }}>
@@ -52,10 +45,12 @@ export default async function ArticlePage({
         <h1 className="article-title">{article.title}</h1>
         <div className="article-meta">
           <Calendar size={14} />
-          {article.date}
+          {formatArticleDate(article.publishedAt)}
         </div>
 
-        <img src={article.image} alt={article.title} className="article-cover" />
+        {article.image && (
+          <img src={article.image} alt={article.title} className="article-cover" />
+        )}
 
         <div className="article-body" dangerouslySetInnerHTML={{ __html: article.content }} />
 

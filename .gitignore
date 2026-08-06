@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -42,3 +43,7 @@ next-env.d.ts
 
 # original-site copy kept locally for comparison only
 /reference
+
+# local SQLite db + admin-uploaded images (dev only; VPS stores these outside the repo)
+/data
+/uploads

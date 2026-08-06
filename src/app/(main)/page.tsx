@@ -16,17 +16,22 @@ import {
   HeartHandshake,
   HeartPulse,
   MessageCircle,
+  Newspaper,
   Stethoscope,
   Target,
   TrendingUp,
   Users,
 } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
-import { NEWS_BY_ID } from "@/data/news";
+import { formatArticleDate, getLatestArticles } from "@/lib/news";
+import AboutImpact from "./AboutImpact";
 
-const homeNews = [1, 2, 3].map((id) => NEWS_BY_ID.get(id)!);
+// Admin-published articles must show up without a rebuild — render per request.
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const homeNews = await getLatestArticles(3);
+
   // Hero image is the page's LCP element; hint the browser before it
   // reaches the <img> tag deep in the DOM.
   preload("/img/dalma_building.webp", { as: "image" });
@@ -80,6 +85,7 @@ export default function HomePage() {
               <p style={{ color: "var(--muted-fg)", lineHeight: 2, fontSize: "1rem", marginBottom: "1.5rem" }}>
                 <strong style={{ color: "var(--foreground)" }}>مدينة الدلما الإنسانية</strong> مدينة متخصصة تهدف إلى توفير منظومة متكاملة من خدمات الرعاية والعلاج والتأهيل والتعليم والتمكين، في بيئة إنسانية آمنة وشاملة، تُسهم في تنمية قدرات الأشخاص ذوي الإعاقة، وتعزيز استقلاليتهم، وتمكينهم من المشاركة الفاعلة في المجتمع.
               </p>
+              <AboutImpact />
             </div>
           </div>
         </div>
@@ -291,22 +297,33 @@ export default function HomePage() {
               جميع الأخبار <ArrowLeft className="icon-16" />
             </Link>
           </div>
-          <div className="news-grid">
-            {homeNews.map((article) => (
-              <article key={article.id} className="news-card card-hover">
-                <div className="news-img-wrap">
-                  <img src={article.image.replace("w=1200&h=600", "w=400&h=260")} alt={article.title} loading="lazy" />
-                  <span className="news-cat">{article.cat}</span>
-                </div>
-                <div className="news-body">
-                  <div className="news-date"><Calendar className="icon-13" /> {article.date}</div>
-                  <h3 className="news-title">{article.title}</h3>
-                  <p className="news-desc">{article.desc}</p>
-                  <Link href={`/news/${article.id}`} className="news-read-more">اقرأ المزيد <ArrowLeft className="icon-16" /></Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          {homeNews.length === 0 ? (
+            <div className="news-empty-state">
+              <Newspaper className="icon-40" />
+              <p>لا توجد أخبار منشورة حالياً — تابعونا قريباً.</p>
+            </div>
+          ) : (
+            <div className="news-grid">
+              {homeNews.map((article) => (
+                <Link key={article.id} href={`/news/${article.slug}`} className="news-card card-hover">
+                  <div className="news-img-wrap">
+                    {article.image ? (
+                      <img src={article.image} alt={article.title} loading="lazy" />
+                    ) : (
+                      <div className="news-img-placeholder" />
+                    )}
+                    <span className="news-cat">{article.cat}</span>
+                  </div>
+                  <div className="news-body">
+                    <div className="news-date"><Calendar className="icon-13" /> {formatArticleDate(article.publishedAt)}</div>
+                    <h3 className="news-title">{article.title}</h3>
+                    <p className="news-desc">{article.desc}</p>
+                    <span className="news-read-more">اقرأ المزيد <ArrowLeft className="icon-16" /></span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

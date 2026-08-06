@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ChevronLeft, Mail, MapPin, X } from "lucide-react";
+import { ChevronLeft, Mail, MapPin } from "lucide-react";
+import XLogo from "./icons/XLogo";
 
 export default function Footer() {
   return (
@@ -9,9 +10,8 @@ export default function Footer() {
           <div>
             <div className="footer-logo-row">
               <img src="/img/logo_white.PNG" alt="شعار مدينة الدلما الإنسانية" className="footer-logo" />
-              <div className="footer-hr-badge">
-                <img src="/img/HR_Logo_Number.jpeg" alt="ترخيص وزارة الموارد البشرية - رقم الترخيص" className="footer-hr-logo" />
-              </div>
+              <img src="/img/rafq_white_logo.PNG" alt="شعار رفق" className="footer-logo footer-logo-lg" />
+              <img src="/img/HR_white_logo.PNG" alt="ترخيص وزارة الموارد البشرية - رقم الترخيص" className="footer-logo footer-logo-xl" />
             </div>
             <p className="footer-about">مدينة الدلما الإنسانية — بيت يحتضن الأشخاص ذوي الإعاقة برعاية صادقة، ويؤمن بقدراتهم، ويسعى إلى تمكينهم من عيش حياة كريمة مليئة بالأمل.</p>
             <div className="footer-socials">
@@ -20,7 +20,15 @@ export default function Footer() {
               <a href="#" className="social-btn" aria-label="Instagram"><Instagram className="icon-16" /></a>
               <a href="#" className="social-btn" aria-label="YouTube"><Youtube className="icon-16" /></a>
               */}
-              <a href="#" className="social-btn" aria-label="X"><X className="icon-16" /></a>
+              <a
+                href="https://x.com/dhc_jouf?lang=ar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+                aria-label="X"
+              >
+                <XLogo className="icon-16" />
+              </a>
             </div>
           </div>
           <div>
@@ -30,7 +38,6 @@ export default function Footer() {
               <li><Link href="/#about" className="footer-link"><ChevronLeft className="icon-13" />عن المدينة</Link></li>
               <li><Link href="/message" className="footer-link"><ChevronLeft className="icon-13" />الرسالة</Link></li>
               <li><Link href="/#programs" className="footer-link"><ChevronLeft className="icon-13" />البرامج</Link></li>
-              <li><Link href="/impact" className="footer-link"><ChevronLeft className="icon-13" />أثر المدينة</Link></li>
               <li><Link href="/news" className="footer-link"><ChevronLeft className="icon-13" />الأخبار</Link></li>
               <li><Link href="/#contact" className="footer-link"><ChevronLeft className="icon-13" />تواصل معنا</Link></li>
             </ul>

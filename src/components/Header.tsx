@@ -58,10 +58,9 @@ export default function Header() {
 
         <nav className="desktop-nav">
           <Link href="/" className="nav-link" style={active(["/"])}>الرئيسية</Link>
-          <Link href="/#about" className="nav-link">عن المدينة</Link>
+          <Link href="/#about" className="nav-link">من نحن</Link>
           <Link href="/message" className="nav-link" style={active(["/message"])}>الرسالة</Link>
           <Link href="/#programs" className="nav-link">البرامج</Link>
-          <Link href="/impact" className="nav-link" style={active(["/impact"])}>أثر المدينة</Link>
           <Link href="/news" className="nav-link" style={active(["/news"])}>الأخبار</Link>
           <Link href="/#contact" className="nav-link">تواصل معنا</Link>
 
@@ -118,7 +117,6 @@ export default function Header() {
         <Link href="/#about" className="mobile-nav-link" onClick={closeMobile}>عن المدينة</Link>
         <Link href="/message" className="mobile-nav-link" onClick={closeMobile}>الرسالة</Link>
         <Link href="/#programs" className="mobile-nav-link" onClick={closeMobile}>البرامج</Link>
-        <Link href="/impact" className="mobile-nav-link" onClick={closeMobile}>أثر المدينة</Link>
         <Link href="/news" className="mobile-nav-link" onClick={closeMobile}>الأخبار</Link>
         <Link href="/#contact" className="mobile-nav-link" onClick={closeMobile}>تواصل معنا</Link>
         <div className="mobile-services-section">
