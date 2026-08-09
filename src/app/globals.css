@@ -798,6 +798,60 @@ footer { background: var(--footer-bg); color: white; }
 
 .news-card.hidden { display: none; }
 
+/* ═══════════════════════ SMALL PHONES ═══════════════════════ */
+@media (max-width: 479px) {
+  .section-inner { padding-inline: 1rem; }
+
+  .hero { min-height: auto; }
+  .hero-content { padding: 5.75rem 0 5rem; }
+  .hero-title { font-size: 2rem; }
+  .hero-desc { font-size: 1rem; line-height: 1.75; }
+  .hero-ctas { flex-direction: column; gap: 0.75rem; }
+  .btn-hero-primary,
+  .btn-hero-outline { justify-content: center; width: 100%; }
+
+  .section-header { margin-bottom: 2.75rem; }
+  .section-h2 { font-size: 1.75rem; }
+  .section-desc { font-size: 0.9375rem; }
+
+  .service-card { padding: 1.5rem; }
+
+  .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .stat-card { padding: 1.5rem; }
+  .stat-num { font-size: 2.5rem; }
+  .stat-label { font-size: 0.9375rem; }
+
+  .program-icon-wrap { margin: 1.25rem 1.25rem 0; }
+  .program-body { padding: 1rem 1.25rem 1.25rem; }
+  .clinic-card { padding: 2rem 1.5rem; }
+
+  .news-header { align-items: stretch; margin-bottom: 2.5rem; }
+  .news-header .btn-outline-primary { justify-content: center; }
+  .news-empty-state { padding: 3.5rem 1rem; }
+
+  .contact-grid { gap: 2.75rem; }
+  .contact-items { margin-top: 1.75rem; gap: 1rem; }
+  .contact-item { align-items: flex-start; }
+  .map-wrapper,
+  .map-wrapper iframe { min-height: 20rem; }
+
+  .footer-inner { padding-top: 3rem; }
+  .footer-grid { gap: 2rem; margin-bottom: 2.5rem; }
+  .footer-logo-row { gap: 0.5rem; }
+  .footer-logo { height: 4rem; }
+  .footer-logo-lg { height: 4.75rem; }
+  .footer-logo-xl { height: 5rem; }
+  .footer-bottom { align-items: flex-start; }
+  .footer-legal { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+
+  .jobs-logo { height: 4rem; }
+  .btn-back { padding: 0.5rem 0.75rem; }
+  .form-section-body { padding: 1.25rem; }
+  .jobs-btns { align-items: stretch; }
+  .btn-draft,
+  .btn-submit-job { width: 100%; text-align: center; }
+}
+
 /* ═══════════════════════ ICON SIZING HELPERS ═══════════════════════ */
 i[data-lucide] { display: inline-flex; align-items: center; justify-content: center; }
 i[data-lucide] svg { width: var(--icon-size, 1rem); height: var(--icon-size, 1rem); }

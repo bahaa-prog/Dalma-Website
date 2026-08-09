@@ -310,3 +310,21 @@
   border-top: 1px solid rgba(255,255,255,0.2);
   padding-top: 1.25rem;
 }
+
+@media (max-width: 479px) {
+  .msg-hero { padding: 7.5rem 0 4.5rem; }
+  .msg-hero-inner,
+  .msg-container { padding-inline: 1rem; }
+  .msg-hero h1 { font-size: 2rem; }
+  .msg-hero p { font-size: 0.9375rem; line-height: 1.75; }
+  .msg-section { padding: 3.5rem 0 5rem; }
+  .chairman-border { margin-bottom: 2rem; border-radius: 1.25rem; }
+  .chairman-card { border-radius: 1.125rem; }
+  .chairman-text-col { padding: 2rem 1.25rem; }
+  .msg-col-heading { font-size: 1.25rem; }
+  .msg-text-body { padding: 1.25rem; font-size: 0.875rem; }
+  .chairman-nameplate { gap: 0.75rem; }
+  .chairman-name { font-size: 0.9375rem; }
+  .chairman-title { font-size: 0.75rem; }
+  .vm-card { padding: 1.75rem; }
+}
