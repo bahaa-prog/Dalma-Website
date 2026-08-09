@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronLeft, Mail, MapPin, X } from "lucide-react";
+import { sitePath } from "@/lib/site-path";
 
 export default function Footer() {
   return (
@@ -8,9 +9,9 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <div className="footer-logo-row">
-              <img src="/img/logo_white.PNG" alt="شعار مدينة الدلما الإنسانية" className="footer-logo" />
+              <img src={sitePath("/img/logo_white.PNG")} alt="شعار مدينة الدلما الإنسانية" className="footer-logo" />
               <div className="footer-hr-badge">
-                <img src="/img/HR_Logo_Number.jpeg" alt="ترخيص وزارة الموارد البشرية - رقم الترخيص" className="footer-hr-logo" />
+                <img src={sitePath("/img/HR_Logo_Number.jpeg")} alt="ترخيص وزارة الموارد البشرية - رقم الترخيص" className="footer-hr-logo" />
               </div>
             </div>
             <p className="footer-about">مدينة الدلما الإنسانية — بيت يحتضن الأشخاص ذوي الإعاقة برعاية صادقة، ويؤمن بقدراتهم، ويسعى إلى تمكينهم من عيش حياة كريمة مليئة بالأمل.</p>

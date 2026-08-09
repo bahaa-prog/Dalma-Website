@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { sitePath } from "@/lib/site-path";
 import {
   Accessibility,
   Briefcase,
@@ -50,10 +51,10 @@ export default function Header() {
       <div className="header-inner">
         <div className="header-logos">
           <Link href="/">
-            <img src="/img/logo_color.PNG" alt="شعار مدينة الدلما الإنسانية" className="header-logo" />
+            <img src={sitePath("/img/logo_color.PNG")} alt="شعار مدينة الدلما الإنسانية" className="header-logo" />
           </Link>
           <span className="header-logo-divider"></span>
-          <img src="/img/HR_logo.jpeg" alt="شعار وزارة الموارد البشرية والتنمية الاجتماعية" className="header-hr-logo" />
+          <img src={sitePath("/img/HR_logo.jpeg")} alt="شعار وزارة الموارد البشرية والتنمية الاجتماعية" className="header-hr-logo" />
         </div>
 
         <nav className="desktop-nav">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import { preconnect } from "react-dom";
+import { sitePath } from "@/lib/site-path";
 import "./globals.css";
 
 const cairo = Cairo({
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: "مدينة الدلما الإنسانية",
   description:
     "مدينة الدلما الإنسانية — رائدة في مجال رعاية وتأهيل الأشخاص ذوي الإعاقة في المملكة العربية السعودية.",
-  icons: { icon: "/img/favicon.svg" },
+  icons: { icon: sitePath("/img/favicon.svg") },
 };
 
 export default function RootLayout({

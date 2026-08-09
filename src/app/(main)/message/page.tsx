@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, CheckCircle2, Eye } from "lucide-react";
+import { sitePath } from "@/lib/site-path";
 import "./message.css";
 
 export default function MessagePage() {
@@ -68,7 +69,7 @@ export default function MessagePage() {
                 )}
 
                 <div className="chairman-nameplate">
-                  <img src="/img/logo_color.PNG" alt="شعار مدينة الدلما" className="chairman-avatar-logo" />
+                  <img src={sitePath("/img/logo_color.PNG")} alt="شعار مدينة الدلما" className="chairman-avatar-logo" />
                   <div>
                     <p className="chairman-name"> الباذل : شافي فاحس الزوين الصقري</p>
                     <p className="chairman-title">رئيس مجلس الإدارة — مدينة الدلما الإنسانية</p>
@@ -78,7 +79,7 @@ export default function MessagePage() {
 
               {/* Image column (left in RTL — column 2) */}
               <div className="chairman-img-col">
-                <img src="/img/chairman_image.jpeg" alt="رئيس مجلس إدارة مدينة الدلما الإنسانية" />
+                <img src={sitePath("/img/chairman_image.jpeg")} alt="رئيس مجلس إدارة مدينة الدلما الإنسانية" />
               </div>
 
             </div>

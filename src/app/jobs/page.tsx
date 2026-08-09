@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { sitePath } from "@/lib/site-path";
 import {
   ArrowRight,
   Award,
@@ -29,7 +30,7 @@ export default function JobsPage() {
       {/* ═══════════════════════ HEADER ═══════════════════════ */}
       <header className="jobs-header">
         <div className="jobs-header-inner">
-          <img src="/img/logo_color.PNG" alt="شعار مدينة الدلما الإنسانية" className="jobs-logo" />
+          <img src={sitePath("/img/logo_color.PNG")} alt="شعار مدينة الدلما الإنسانية" className="jobs-logo" />
           <Link href="/" className="btn-back">
             <ArrowRight className="icon-16" />
             العودة للرئيسية
