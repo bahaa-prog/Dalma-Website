@@ -13,6 +13,7 @@ import {
   Upload,
   Users,
 } from "lucide-react";
+import { assetPath } from "@/lib/site-paths";
 
 export default function JobsPage() {
   const [cvName, setCvName] = useState<string | null>(null);
@@ -29,7 +30,7 @@ export default function JobsPage() {
       {/* ═══════════════════════ HEADER ═══════════════════════ */}
       <header className="jobs-header">
         <div className="jobs-header-inner">
-          <img src="/img/logo_color.PNG" alt="شعار مدينة الدلما الإنسانية" className="jobs-logo" />
+          <img src={assetPath("/img/logo_color.PNG")} alt="شعار مدينة الدلما الإنسانية" className="jobs-logo" />
           <Link href="/" className="btn-back">
             <ArrowRight className="icon-16" />
             العودة للرئيسية

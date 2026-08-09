@@ -1,57 +1,29 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
+# Dependencies and build output
+/node_modules/
 /.next/
 /out/
 
-# production
-/build
+# Environment and local data
+.env*
+!.env.example
+/data/
+/uploads/
 
-# misc
+# Local tooling and editors
+.agents/
+.claude/
+/skills/
+.vscode/
+.idea/
+*.iml
+
+# OS, logs, and temporary files
 .DS_Store
-*.pem
-
-# debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-!.env.example
-
-# vercel
-.vercel
-
-# typescript
+pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
-
-# original-site copy kept locally for comparison only
-/reference
-
-# local SQLite db + admin-uploaded images (dev only; VPS stores these outside the repo)
-/data
-/uploads
-
-# AI agent tooling (Claude Code instructions + installed skills) — kept locally,
-# not published to the public repo
-/.agents
-/.claude
-CLAUDE.md
-AGENTS.md
-skills-lock.json
+*.pem

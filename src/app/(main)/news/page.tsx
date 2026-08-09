@@ -1,9 +1,6 @@
 import { getPublishedArticles } from "@/lib/news";
 import NewsGrid from "./NewsGrid";
 
-// Admin-published articles must show up without a rebuild — render per request.
-export const dynamic = "force-dynamic";
-
 export default async function NewsPage() {
   const articles = await getPublishedArticles();
 

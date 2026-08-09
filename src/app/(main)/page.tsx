@@ -24,24 +24,22 @@ import {
 } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
 import { formatArticleDate, getLatestArticles } from "@/lib/news";
+import { assetPath } from "@/lib/site-paths";
 import AboutImpact from "./AboutImpact";
-
-// Admin-published articles must show up without a rebuild — render per request.
-export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const homeNews = await getLatestArticles(3);
 
   // Hero image is the page's LCP element; hint the browser before it
   // reaches the <img> tag deep in the DOM.
-  preload("/img/dalma_building.webp", { as: "image" });
+  preload(assetPath("/img/dalma_building.webp"), { as: "image" });
 
   return (
     <>
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section className="hero">
         <div className="hero-bg">
-          <img src="/img/dalma_building.webp" alt="مبنى مدينة الدلما الإنسانية" />
+          <img src={assetPath("/img/dalma_building.webp")} alt="مبنى مدينة الدلما الإنسانية" />
           <div className="hero-overlay hero-gradient"></div>
         </div>
         <div className="hero-content">
@@ -76,7 +74,7 @@ export default async function HomePage() {
           <div className="about-grid">
             <div className="about-img-wrap">
               <div className="about-img-inner">
-                <img src="/img/section_image.webp" alt="فريق مدينة الدلما الإنسانية" loading="lazy" />
+                <img src={assetPath("/img/section_image.webp")} alt="فريق مدينة الدلما الإنسانية" loading="lazy" />
               </div>
             </div>
             <div>

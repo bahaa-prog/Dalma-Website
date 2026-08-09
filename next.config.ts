@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
-  // Standalone: `npm run build` traces the minimal server + node_modules needed
-  // into .next/standalone/server.js, deployed to the VPS behind PM2 + Nginx.
-  output: "standalone",
+  output: "export",
+  basePath,
+  trailingSlash: true,
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
