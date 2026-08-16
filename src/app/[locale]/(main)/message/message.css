@@ -98,13 +98,14 @@
   grid-template-columns: 1fr;
 }
 @media (min-width: 768px) {
-  /* In RTL: column 1 = right side, column 2 = left side */
+  /* Grid tracks follow inline-start → inline-end, so this self-flips with
+     the <html dir>: text column sits at inline-start, image at inline-end. */
   .chairman-card {
     grid-template-columns: 1fr 320px;
   }
 }
 
-/* ── Image column (left side in RTL = column 2) ── */
+/* ── Image column (inline-end: left in RTL, right in LTR) ── */
 .chairman-img-col {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -128,7 +129,7 @@
     0 8px 24px rgba(18,125,179,0.25);
 }
 
-/* ── Text column (right side in RTL = column 1) ── */
+/* ── Text column (inline-start: right in RTL, left in LTR) ── */
 .chairman-text-col {
   padding: 3rem 2.5rem;
   display: flex;
@@ -141,7 +142,7 @@
 .chairman-text-col::before {
   content: '';
   position: absolute;
-  top: 0; right: 0;
+  top: 0; inset-inline-start: 0;
   width: 120px; height: 120px;
   background: radial-gradient(circle at top right, rgba(18,125,179,0.07), transparent 70%);
   pointer-events: none;
@@ -152,7 +153,7 @@
   line-height: 1;
   color: #127DB3;
   opacity: 0.12;
-  font-family: Georgia, serif;
+  font-family: var(--font-thmanyah-serif), Georgia, serif;
   margin-bottom: -1.5rem;
   display: block;
 }
@@ -177,7 +178,7 @@
   position: relative;
   background: #f8fbfe;
   border: 1.5px solid #c8dff0;
-  border-right: 4px solid #127DB3;
+  border-inline-start: 4px solid #127DB3;
   border-radius: 0.75rem;
   padding: 1.5rem 1.75rem;
   font-size: 0.9375rem;

@@ -1,28 +1,15 @@
-import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
-import { assetPath } from "@/lib/site-paths";
 import "./globals.css";
 
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
-export const metadata: Metadata = {
-  title: "مدينة الدلما الإنسانية",
-  description:
-    "مدينة الدلما الإنسانية — رائدة في مجال رعاية وتأهيل الأشخاص ذوي الإعاقة في المملكة العربية السعودية.",
-  icons: { icon: assetPath("/img/favicon.svg") },
-};
-
+// Static export has no server, so there is no proxy.ts to negotiate a
+// locale — this bare-root layout only ever renders the client redirect in
+// page.tsx, which sends visitors on to /ar or /en.
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable}>
+    <html lang="ar" dir="rtl">
       <body>{children}</body>
     </html>
   );

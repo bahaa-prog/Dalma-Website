@@ -1,14 +1,15 @@
 import { Clock, ExternalLink, Mail, MapPin } from "lucide-react";
+import type { Dictionary } from "@/i18n/dictionaries/ar";
 
-export default function ContactSection() {
+export default function ContactSection({ dict }: { dict: Dictionary["contact"] }) {
   return (
     <section id="contact">
       <div className="section-inner">
         <div className="contact-grid">
           <div>
-            <span className="section-label">نسعد بتواصلكم</span>
-            <h2 className="section-h2 section-title rtl-section-title" style={{ textAlign: "right", marginBottom: "1.5rem" }}>تواصل معنا</h2>
-            <p style={{ color: "var(--muted-fg)", lineHeight: 2 }}>نسعد بتواصلكم للإجابة عن الاستفسارات، واستقبال طلبات الخدمات، وبناء الشراكات، عبر قنوات التواصل الرسمية لمدينة الدلما الإنسانية.</p>
+            <span className="section-label">{dict.label}</span>
+            <h2 className="section-h2 section-title rtl-section-title" style={{ textAlign: "start", marginBottom: "1.5rem" }}>{dict.heading}</h2>
+            <p style={{ color: "var(--muted-fg)", lineHeight: 2 }}>{dict.intro}</p>
             <div className="contact-items">
               {/* TODO: update phone number
               <a href="tel:920000000" className="contact-item">
@@ -18,30 +19,30 @@ export default function ContactSection() {
               */}
               <a href="mailto:info@dalma.org.sa" className="contact-item">
                 <div className="contact-item-icon"><Mail className="icon-20" /></div>
-                <div><div className="contact-item-label">البريد الإلكتروني</div><div className="contact-item-val">info@dalma.edu.sa</div></div>
+                <div><div className="contact-item-label">{dict.emailLabel}</div><div className="contact-item-val" dir="ltr">{dict.email}</div></div>
               </a>
               <a href="#" className="contact-item">
                 <div className="contact-item-icon"><MapPin className="icon-20" /></div>
-                <div><div className="contact-item-label">العنوان</div><div className="contact-item-val">الجوف، المملكة العربية السعودية</div></div>
+                <div><div className="contact-item-label">{dict.addressLabel}</div><div className="contact-item-val">{dict.address}</div></div>
               </a>
               <a href="#" className="contact-item">
                 <div className="contact-item-icon"><Clock className="icon-20" /></div>
-                <div><div className="contact-item-label">ساعات العمل</div><div className="contact-item-val">الأحد – الخميس: ٨ص – ٤م</div></div>
+                <div><div className="contact-item-label">{dict.hoursLabel}</div><div className="contact-item-val">{dict.hours}</div></div>
               </a>
             </div>
           </div>
           <div className="map-wrapper">
             <iframe
-              src="https://www.google.com/maps?q=مدينة+الدلما+الإنسانية+سكاكا+الجوف&output=embed"
+              src={`https://www.google.com/maps?q=${dict.mapQuery}&output=embed`}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="موقع مدينة الدلما الإنسانية"
+              title={dict.mapTitle}
             ></iframe>
-            <a href="https://maps.app.goo.gl/59mRyrtwEJ195ZEP8" target="_blank" rel="noopener noreferrer" className="map-overlay-link" aria-label="فتح في خرائط Google">
+            <a href="https://maps.app.goo.gl/59mRyrtwEJ195ZEP8" target="_blank" rel="noopener noreferrer" className="map-overlay-link" aria-label={dict.openInMaps}>
               <span className="map-open-badge">
                 <ExternalLink className="icon-16" />
-                افتح في خرائط Google
+                {dict.openInMaps}
               </span>
             </a>
           </div>
