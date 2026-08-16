@@ -24,8 +24,8 @@ const thmanyahSerif = localFont({
   variable: "--font-thmanyah-serif",
   display: "swap",
   fallback: ["Georgia", "serif"],
-  src: "../../fonts/thmanyah/thmanyahserifdisplay-Regular.woff2",
-  weight: "400",
+  src: "../../fonts/thmanyah/thmanyahserifdisplay-Bold.woff2",
+  weight: "700",
   style: "normal",
 });
 

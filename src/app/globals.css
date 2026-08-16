@@ -118,7 +118,7 @@ input, select, textarea { font-family: inherit; }
 @media (min-width: 1024px) { .desktop-nav { display: flex; } }
 
 .nav-link {
-  font-size: 0.875rem; font-weight: 600;
+  font-size: 0.875rem; font-weight: 700;
   color: var(--foreground);
   transition: color 0.2s;
 }
@@ -150,7 +150,7 @@ input, select, textarea { font-family: inherit; }
   align-items: center;
   gap: 0.375rem;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--foreground);
   border: 1px solid var(--border);
   border-radius: 9999px;
@@ -167,7 +167,7 @@ input, select, textarea { font-family: inherit; }
 
 .dropdown-btn {
   display: flex; align-items: center; gap: 0.375rem;
-  font-size: 0.875rem; font-weight: 600;
+  font-size: 0.875rem; font-weight: 700;
   color: var(--foreground); transition: color 0.2s;
 }
 .dropdown-btn:hover, .dropdown-btn.open { color: var(--primary); }
@@ -189,7 +189,7 @@ input, select, textarea { font-family: inherit; }
 .eservice-item {
   display: flex; align-items: center; gap: 0.75rem;
   padding: 0.75rem 1rem; border-radius: 0.75rem;
-  font-size: 0.875rem; font-weight: 600;
+  font-size: 0.875rem; font-weight: 700;
   width: 100%; text-align: start;
   transition: background 0.2s;
 }
@@ -221,7 +221,7 @@ input, select, textarea { font-family: inherit; }
 #mobile-menu.open { display: flex; }
 
 .mobile-nav-link {
-  font-size: 0.875rem; font-weight: 600;
+  font-size: 0.875rem; font-weight: 700;
   color: var(--foreground);
   padding: 0.625rem 0;
   border-bottom: 1px solid rgba(221,227,234,0.5);
@@ -238,7 +238,7 @@ input, select, textarea { font-family: inherit; }
 .mobile-svc-btn {
   display: flex; align-items: center; gap: 0.75rem;
   padding: 0.625rem 0.75rem; border-radius: 0.75rem;
-  font-size: 0.875rem; font-weight: 600;
+  font-size: 0.875rem; font-weight: 700;
   width: 100%; text-align: start;
   margin-bottom: 0.25rem; transition: background 0.2s;
 }
@@ -266,7 +266,8 @@ input, select, textarea { font-family: inherit; }
   letter-spacing: 0.1em; margin-bottom: 0.75rem;
 }
 .section-h2 {
-  font-size: 2.25rem; font-weight: 800;
+  font-family: var(--font-thmanyah-serif), Georgia, serif;
+  font-size: 2.25rem; font-weight: 700;
   color: var(--foreground); margin-bottom: 1rem;
 }
 .section-desc {
@@ -295,7 +296,8 @@ input, select, textarea { font-family: inherit; }
   margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.3);
 }
 .hero-title {
-  font-size: 2.5rem; font-weight: 800;
+  font-family: var(--font-thmanyah-serif), Georgia, serif;
+  font-size: 2.5rem; font-weight: 700;
   line-height: 1.2; color: white; margin-bottom: 1.5rem;
 }
 @media (min-width: 640px)  { .hero-title { font-size: 3rem; } }
@@ -332,8 +334,8 @@ input, select, textarea { font-family: inherit; }
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 1rem; padding: 1.5rem; text-align: center; color: white;
 }
-.hero-stat-num { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.25rem; }
-.hero-stat-label { font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+.hero-stat-num { font-size: 2.25rem; font-weight: 900; margin-bottom: 0.25rem; }
+.hero-stat-label { font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,0.85); }
 
 .hero-scroll {
   position: absolute; bottom: 2rem; left: 50%; z-index: 10; color: white;
@@ -357,12 +359,12 @@ input, select, textarea { font-family: inherit; }
 }
 .about-badge-years { bottom: -1.5rem; left: -1.5rem; background: var(--primary); color: white; }
 .about-badge-iso  { top: -1.5rem; right: -1.5rem; background: var(--secondary); color: white; }
-.about-badge-num  { font-size: 1.875rem; font-weight: 800; }
-.about-badge-text { font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.9); }
+.about-badge-num  { font-size: 1.875rem; font-weight: 900; }
+.about-badge-text { font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,0.9); }
 
 .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
 .about-feature { display: flex; align-items: center; gap: 0.75rem; }
-.about-feature span { font-size: 0.875rem; font-weight: 600; color: var(--foreground); }
+.about-feature span { font-size: 0.875rem; font-weight: 700; color: var(--foreground); }
 .about-feature i { color: var(--secondary); flex-shrink: 0; }
 
 .about-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -430,7 +432,7 @@ input, select, textarea { font-family: inherit; }
   background: linear-gradient(135deg, #127DB3 0%, #0e6a99 50%, #588B46 100%);
 }
 .stats-hdr { text-align: center; margin-bottom: 3.5rem; }
-.stats-hdr h2 { font-size: 2.25rem; font-weight: 800; color: white; margin-bottom: 0.75rem; }
+.stats-hdr h2 { font-family: var(--font-thmanyah-serif), Georgia, serif; font-size: 2.25rem; font-weight: 700; color: white; margin-bottom: 0.75rem; }
 .stats-hdr p  { font-size: 1rem; color: rgba(255,255,255,0.8); }
 
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -442,8 +444,8 @@ input, select, textarea { font-family: inherit; }
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 1rem; padding: 2rem;
 }
-.stat-num   { font-size: 3rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
-.stat-label { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+.stat-num   { font-size: 3rem; font-weight: 900; color: white; margin-bottom: 0.5rem; }
+.stat-label { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.85); }
 
 /* ═══════════════════════ PROGRAMS ═══════════════════════ */
 #programs { padding: 6rem 0; background: white; }
@@ -485,7 +487,7 @@ input, select, textarea { font-family: inherit; }
 
 .clinic-num {
   position: absolute; top: -0.5rem; inset-inline-start: 1.25rem;
-  font-size: 5rem; font-weight: 800; line-height: 1;
+  font-size: 5rem; font-weight: 900; line-height: 1;
   color: rgba(18,125,179,0.07); z-index: 0;
 }
 .clinic-icon-circle {
@@ -568,7 +570,7 @@ input, select, textarea { font-family: inherit; }
 }
 .contact-item:hover .contact-item-icon { background: var(--primary); color: white; }
 .contact-item-icon svg { transition: color 0.2s; }
-.contact-item-label { font-size: 0.75rem; font-weight: 600; color: var(--muted-fg); margin-bottom: 0.125rem; }
+.contact-item-label { font-size: 0.75rem; font-weight: 700; color: var(--muted-fg); margin-bottom: 0.125rem; }
 .contact-item-val   { font-weight: 700; color: var(--foreground); font-size: 0.875rem; }
 
 /* ═══════════════════════ FOOTER ═══════════════════════ */
@@ -670,7 +672,7 @@ footer { background: var(--footer-bg); color: white; }
   width: 3.5rem; height: 3.5rem; border-radius: 9999px;
   background: rgba(255,255,255,0.2); margin-bottom: 1rem;
 }
-.jobs-hero-title { font-size: 1.875rem; font-weight: 800; margin-bottom: 0.5rem; }
+.jobs-hero-title { font-family: var(--font-thmanyah-serif), Georgia, serif; font-size: 1.875rem; font-weight: 700; margin-bottom: 0.5rem; }
 @media (min-width: 640px) { .jobs-hero-title { font-size: 2.25rem; } }
 .jobs-hero-desc { color: rgba(255,255,255,0.8); font-size: 0.875rem; max-width: 32rem; margin-inline: auto; }
 
@@ -693,7 +695,7 @@ footer { background: var(--footer-bg); color: white; }
 }
 .form-section-icon.blue { background: rgba(18,125,179,0.1); color: var(--primary); }
 .form-section-icon.green { background: rgba(88,139,70,0.1); color: var(--secondary); }
-.form-section-title { font-size: 1rem; font-weight: 800; color: var(--foreground); }
+.form-section-title { font-size: 1rem; font-weight: 900; color: var(--foreground); }
 .form-section-body { padding: 1.5rem; }
 
 .jfg3 { display: grid; gap: 1.25rem; }
@@ -701,7 +703,7 @@ footer { background: var(--footer-bg); color: white; }
 .jfg2 { display: grid; gap: 1.25rem; }
 @media (min-width: 640px) { .jfg2 { grid-template-columns: 1fr 1fr; } }
 
-.j-label { display: block; font-size: 0.75rem; font-weight: 600; color: #4a5568; margin-bottom: 0.375rem; }
+.j-label { display: block; font-size: 0.75rem; font-weight: 700; color: #4a5568; margin-bottom: 0.375rem; }
 .j-input {
   width: 100%; background: #f5f7fa; border: 1px solid var(--border);
   border-radius: 0.5rem; padding: 0.625rem 1rem;
@@ -725,7 +727,7 @@ footer { background: var(--footer-bg); color: white; }
 .exp-num {
   width: 1.25rem; height: 1.25rem; border-radius: 9999px;
   background: rgba(18,125,179,0.1); color: var(--primary);
-  font-size: 0.625rem; font-weight: 800;
+  font-size: 0.625rem; font-weight: 900;
   display: inline-flex; align-items: center; justify-content: center;
 }
 .req-tag { font-size: 0.625rem; color: #f87171; }
@@ -740,7 +742,7 @@ footer { background: var(--footer-bg); color: white; }
 .cv-label:hover { background: rgba(232,244,252,0.7); }
 .cv-icon { color: rgba(18,125,179,0.5); margin-bottom: 0.5rem; transition: color 0.2s; }
 .cv-label:hover .cv-icon { color: var(--primary); }
-.cv-text    { font-size: 0.875rem; font-weight: 600; color: var(--primary); }
+.cv-text    { font-size: 0.875rem; font-weight: 700; color: var(--primary); }
 .cv-subtext { font-size: 0.75rem; color: var(--muted-fg); margin-top: 0.25rem; }
 
 .jobs-btns {
@@ -773,7 +775,7 @@ footer { background: var(--footer-bg); color: white; }
   background: rgba(88,139,70,0.1);
   display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
 }
-.success-title { font-size: 1.5rem; font-weight: 800; color: var(--foreground); margin-bottom: 0.75rem; }
+.success-title { font-size: 1.5rem; font-weight: 900; color: var(--foreground); margin-bottom: 0.75rem; }
 .success-desc  { font-size: 0.875rem; color: var(--muted-fg); line-height: 1.75; margin-bottom: 2rem; }
 .btn-back-home {
   display: inline-block; background: var(--primary); color: white;
@@ -788,7 +790,7 @@ footer { background: var(--footer-bg); color: white; }
   color: white; text-align: center;
 }
 .news-page-hero .section-label { color: rgba(255,255,255,0.7); }
-.news-page-hero h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; }
+.news-page-hero h1 { font-family: var(--font-thmanyah-serif), Georgia, serif; font-size: 2.25rem; font-weight: 700; margin-bottom: 0.75rem; }
 @media (min-width: 640px) { .news-page-hero h1 { font-size: 2.75rem; } }
 .news-page-hero p { color: rgba(255,255,255,0.8); font-size: 1rem; max-width: 36rem; margin-inline: auto; }
 

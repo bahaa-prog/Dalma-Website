@@ -49,8 +49,9 @@
   margin-bottom: 1.5rem;
 }
 .msg-hero h1 {
+  font-family: var(--font-thmanyah-serif), Georgia, serif;
   font-size: 2.5rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -150,6 +151,7 @@
 
 .msg-quote-icon {
   font-size: 6rem;
+  font-weight: 700;
   line-height: 1;
   color: #127DB3;
   opacity: 0.12;
@@ -159,15 +161,16 @@
 }
 .msg-col-label {
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.14em;
   color: #588B46;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
 .msg-col-heading {
+  font-family: var(--font-thmanyah-serif), Georgia, serif;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 700;
   color: #1a2a3a;
   margin-bottom: 1.5rem;
   line-height: 1.35;
@@ -228,7 +231,7 @@
 }
 .chairman-name {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 900;
   color: #1a2a3a;
 }
 .chairman-title {
@@ -289,7 +292,7 @@
 .vm-card-icon svg { color: white; }
 .vm-card-tag {
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.14em;
   color: rgba(255,255,255,0.65);
   text-transform: uppercase;
