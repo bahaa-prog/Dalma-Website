@@ -8,6 +8,13 @@
       "when": 1783942665811,
       "tag": "0000_spicy_jack_flag",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786786000000,
+      "tag": "0001_bilingual_news",
+      "breakpoints": true
     }
   ]
 }

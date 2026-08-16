@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { articleInputSchema, deleteArticle, getArticleById, updateArticle } from "@/lib/news";
+import { articleInputSchema, deleteArticle, getArticleById, isArticleInputPublishable, updateArticle } from "@/lib/news";
 import { sanitizeArticleHtml } from "@/lib/sanitize-article";
 
 export async function GET(
@@ -8,7 +8,7 @@ export async function GET(
 ) {
   const { id } = await params;
   const article = await getArticleById(Number(id));
-  if (!article) return NextResponse.json({ error: "غير موجود." }, { status: 404 });
+  if (!article) return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
   return NextResponse.json({ article });
 }
 
@@ -22,11 +22,18 @@ export async function PUT(
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
+  if (parsed.data.published && !isArticleInputPublishable(parsed.data)) {
+    return NextResponse.json({ error: "INCOMPLETE_TRANSLATION" }, { status: 400 });
+  }
+
   const article = await updateArticle(Number(id), {
     ...parsed.data,
-    content: sanitizeArticleHtml(parsed.data.content),
+    translations: {
+      ar: { ...parsed.data.translations.ar, content: sanitizeArticleHtml(parsed.data.translations.ar.content) },
+      en: { ...parsed.data.translations.en, content: sanitizeArticleHtml(parsed.data.translations.en.content) },
+    },
   });
-  if (!article) return NextResponse.json({ error: "غير موجود." }, { status: 404 });
+  if (!article) return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
   return NextResponse.json({ article });
 }
 
@@ -36,6 +43,6 @@ export async function DELETE(
 ) {
   const { id } = await params;
   const ok = await deleteArticle(Number(id));
-  if (!ok) return NextResponse.json({ error: "غير موجود." }, { status: 404 });
+  if (!ok) return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
   return NextResponse.json({ ok: true });
 }

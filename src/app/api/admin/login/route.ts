@@ -16,15 +16,12 @@ function clientKey(req: NextRequest): string {
 export async function POST(req: NextRequest) {
   const key = clientKey(req);
   if (isRateLimited(key)) {
-    return NextResponse.json(
-      { error: "محاولات دخول كثيرة، حاول لاحقاً." },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: "RATE_LIMITED" }, { status: 429 });
   }
 
   const parsed = loginSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
-    return NextResponse.json({ error: "بيانات غير صالحة." }, { status: 400 });
+    return NextResponse.json({ error: "INVALID_INPUT" }, { status: 400 });
   }
 
   const { username, password } = parsed.data;
@@ -32,7 +29,7 @@ export async function POST(req: NextRequest) {
   const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
 
   if (!adminUsername || !adminPasswordHash) {
-    return NextResponse.json({ error: "الخادم غير معدّ بشكل صحيح." }, { status: 500 });
+    return NextResponse.json({ error: "SERVER_MISCONFIGURED" }, { status: 500 });
   }
 
   const usernameOk = username === adminUsername;
@@ -40,7 +37,7 @@ export async function POST(req: NextRequest) {
 
   if (!usernameOk || !passwordOk) {
     recordFailedAttempt(key);
-    return NextResponse.json({ error: "بيانات الدخول غير صحيحة." }, { status: 401 });
+    return NextResponse.json({ error: "INVALID_CREDENTIALS" }, { status: 401 });
   }
 
   clearAttempts(key);

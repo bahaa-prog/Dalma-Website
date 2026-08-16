@@ -13,13 +13,28 @@ import {
   UserPlus,
   X,
 } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import { localizePath, stripLocale } from "@/i18n/routing";
+import type { Dictionary } from "@/i18n/dictionaries/ar";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-export default function Header() {
+export default function Header({
+  locale,
+  dict,
+  common,
+}: {
+  locale: Locale;
+  dict: Dictionary["header"];
+  common: Dictionary["common"];
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+
+  const href = (path: string) => localizePath(locale, path);
+  const hrefHash = (hash: string) => `${localizePath(locale, "/")}${hash}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -38,8 +53,9 @@ export default function Header() {
     return () => document.removeEventListener("click", onDocClick);
   }, []);
 
+  const { rest: currentPath } = stripLocale(pathname ?? "/");
   const active = (paths: string[]) =>
-    paths.some((p) => (p === "/" ? pathname === "/" : pathname.startsWith(p)))
+    paths.some((p) => (p === "/" ? currentPath === "/" : currentPath.startsWith(p)))
       ? { color: "var(--primary)" }
       : undefined;
 
@@ -49,20 +65,20 @@ export default function Header() {
     <header id="site-header" className={scrolled ? "scrolled" : undefined}>
       <div className="header-inner">
         <div className="header-logos">
-          <Link href="/">
-            <img src="/img/logo_color.PNG" alt="شعار مدينة الدلما الإنسانية" className="header-logo" />
+          <Link href={href("/")}>
+            <img src="/img/logo_color.PNG" alt={common.logoAlt} className="header-logo" />
           </Link>
           <span className="header-logo-divider"></span>
-          <img src="/img/HR_logo.jpeg" alt="شعار وزارة الموارد البشرية والتنمية الاجتماعية" className="header-hr-logo" />
+          <img src="/img/HR_logo.jpeg" alt={dict.hrLogoAlt} className="header-hr-logo" />
         </div>
 
         <nav className="desktop-nav">
-          <Link href="/" className="nav-link" style={active(["/"])}>الرئيسية</Link>
-          <Link href="/#about" className="nav-link">من نحن</Link>
-          <Link href="/message" className="nav-link" style={active(["/message"])}>الرسالة</Link>
-          <Link href="/#programs" className="nav-link">البرامج</Link>
-          <Link href="/news" className="nav-link" style={active(["/news"])}>الأخبار</Link>
-          <Link href="/#contact" className="nav-link">تواصل معنا</Link>
+          <Link href={href("/")} className="nav-link" style={active(["/"])}>{dict.home}</Link>
+          <Link href={hrefHash("#about")} className="nav-link">{dict.about}</Link>
+          <Link href={href("/message")} className="nav-link" style={active(["/message"])}>{dict.message}</Link>
+          <Link href={hrefHash("#programs")} className="nav-link">{dict.programs}</Link>
+          <Link href={href("/news")} className="nav-link" style={active(["/news"])}>{dict.news}</Link>
+          <Link href={hrefHash("#contact")} className="nav-link">{dict.contact}</Link>
 
           <div className="dropdown-wrapper" id="eservices-wrapper" ref={servicesRef}>
             <button
@@ -70,42 +86,48 @@ export default function Header() {
               id="eservices-btn"
               onClick={() => setServicesOpen((o) => !o)}
             >
-              الخدمات الإلكترونية
+              {dict.eservicesLabel}
               <ChevronDown className="dropdown-chevron icon-15" />
             </button>
             <div id="eservices-panel" className={servicesOpen ? "open" : undefined}>
               <button className="eservice-item disabled">
                 <span className="eservice-icon grey"><UserPlus className="icon-16" /></span>
-                <span>تسجيل مستفيد جديد</span>
-                <span className="soon-badge">قريباً</span>
+                <span>{dict.eserviceRegister}</span>
+                <span className="soon-badge">{dict.comingSoon}</span>
               </button>
               <button className="eservice-item disabled">
                 <span className="eservice-icon grey"><HandHeart className="icon-16" /></span>
-                <span>التطوع</span>
-                <span className="soon-badge">قريباً</span>
+                <span>{dict.eserviceVolunteer}</span>
+                <span className="soon-badge">{dict.comingSoon}</span>
               </button>
-              <Link href="/jobs" className="eservice-item can-click">
+              <Link href={href("/jobs")} className="eservice-item can-click">
                 <span className="eservice-icon blue"><Briefcase className="icon-16" /></span>
-                <span>التوظيف</span>
+                <span>{dict.eserviceJobs}</span>
               </Link>
               <button className="eservice-item disabled">
                 <span className="eservice-icon grey"><Accessibility className="icon-16" /></span>
-                <span>استشارات إمكانية الوصول</span>
-                <span className="soon-badge">قريباً</span>
+                <span>{dict.eserviceAccessibility}</span>
+                <span className="soon-badge">{dict.comingSoon}</span>
               </button>
             </div>
           </div>
+
+          <LanguageSwitcher
+            locale={locale}
+            otherLanguageName={common.otherLanguageName}
+            label={common.languageSwitcherLabel}
+          />
         </nav>
 
-        <Link href="/#contact" className="contact-cta-btn">
+        <Link href={hrefHash("#contact")} className="contact-cta-btn">
           <Phone className="icon-15" />
-          تواصل معنا
+          {dict.contact}
         </Link>
 
         <button
           className="hamburger-btn"
           id="menu-btn"
-          aria-label={menuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+          aria-label={menuOpen ? dict.closeMenu : dict.openMenu}
           onClick={() => setMenuOpen((o) => !o)}
         >
           {menuOpen ? <X className="icon-22" /> : <Menu className="icon-22" />}
@@ -113,35 +135,42 @@ export default function Header() {
       </div>
 
       <div id="mobile-menu" className={menuOpen ? "open" : undefined}>
-        <Link href="/" className="mobile-nav-link" onClick={closeMobile}>الرئيسية</Link>
-        <Link href="/#about" className="mobile-nav-link" onClick={closeMobile}>عن المدينة</Link>
-        <Link href="/message" className="mobile-nav-link" onClick={closeMobile}>الرسالة</Link>
-        <Link href="/#programs" className="mobile-nav-link" onClick={closeMobile}>البرامج</Link>
-        <Link href="/news" className="mobile-nav-link" onClick={closeMobile}>الأخبار</Link>
-        <Link href="/#contact" className="mobile-nav-link" onClick={closeMobile}>تواصل معنا</Link>
+        <Link href={href("/")} className="mobile-nav-link" onClick={closeMobile}>{dict.home}</Link>
+        <Link href={hrefHash("#about")} className="mobile-nav-link" onClick={closeMobile}>{dict.about}</Link>
+        <Link href={href("/message")} className="mobile-nav-link" onClick={closeMobile}>{dict.message}</Link>
+        <Link href={hrefHash("#programs")} className="mobile-nav-link" onClick={closeMobile}>{dict.programs}</Link>
+        <Link href={href("/news")} className="mobile-nav-link" onClick={closeMobile}>{dict.news}</Link>
+        <Link href={hrefHash("#contact")} className="mobile-nav-link" onClick={closeMobile}>{dict.contact}</Link>
         <div className="mobile-services-section">
-          <p className="mobile-services-label">الخدمات الإلكترونية</p>
+          <p className="mobile-services-label">{dict.eservicesLabel}</p>
           <button className="mobile-svc-btn disabled">
             <UserPlus className="icon-16" style={{ color: "var(--primary)" }} />
-            تسجيل مستفيد جديد
-            <span style={{ marginRight: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>قريباً</span>
+            {dict.eserviceRegister}
+            <span style={{ marginInlineStart: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>{dict.comingSoon}</span>
           </button>
           <button className="mobile-svc-btn disabled">
             <HandHeart className="icon-16" style={{ color: "var(--primary)" }} />
-            التطوع
-            <span style={{ marginRight: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>قريباً</span>
+            {dict.eserviceVolunteer}
+            <span style={{ marginInlineStart: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>{dict.comingSoon}</span>
           </button>
-          <Link href="/jobs" className="mobile-svc-btn can-click" onClick={closeMobile}>
+          <Link href={href("/jobs")} className="mobile-svc-btn can-click" onClick={closeMobile}>
             <Briefcase className="icon-16" style={{ color: "var(--primary)" }} />
-            التوظيف
+            {dict.eserviceJobs}
           </Link>
           <button className="mobile-svc-btn disabled">
             <Accessibility className="icon-16" style={{ color: "var(--primary)" }} />
-            استشارات إمكانية الوصول
-            <span style={{ marginRight: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>قريباً</span>
+            {dict.eserviceAccessibility}
+            <span style={{ marginInlineStart: "auto", fontSize: "0.625rem", color: "var(--muted-fg)" }}>{dict.comingSoon}</span>
           </button>
         </div>
-        <Link href="/#contact" className="mobile-contact-cta" onClick={closeMobile}>تواصل معنا</Link>
+        <LanguageSwitcher
+          locale={locale}
+          otherLanguageName={common.otherLanguageName}
+          label={common.languageSwitcherLabel}
+          className="lang-switcher-btn lang-switcher-btn--mobile"
+          onNavigate={closeMobile}
+        />
+        <Link href={hrefHash("#contact")} className="mobile-contact-cta" onClick={closeMobile}>{dict.contact}</Link>
       </div>
     </header>
   );

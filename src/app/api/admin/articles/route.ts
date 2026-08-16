@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { articleInputSchema, createArticle, getAllArticles } from "@/lib/news";
+import { articleInputSchema, createArticle, getAllArticles, isArticleInputPublishable } from "@/lib/news";
 import { sanitizeArticleHtml } from "@/lib/sanitize-article";
 
 export async function GET() {
@@ -13,9 +13,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
+  if (parsed.data.published && !isArticleInputPublishable(parsed.data)) {
+    return NextResponse.json({ error: "INCOMPLETE_TRANSLATION" }, { status: 400 });
+  }
+
   const article = await createArticle({
     ...parsed.data,
-    content: sanitizeArticleHtml(parsed.data.content),
+    translations: {
+      ar: { ...parsed.data.translations.ar, content: sanitizeArticleHtml(parsed.data.translations.ar.content) },
+      en: { ...parsed.data.translations.en, content: sanitizeArticleHtml(parsed.data.translations.en.content) },
+    },
   });
   return NextResponse.json({ article }, { status: 201 });
 }
