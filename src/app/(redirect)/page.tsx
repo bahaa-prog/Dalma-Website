@@ -29,7 +29,6 @@ const redirectScript = `
 export default function RootPage() {
   return (
     <>
-      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
       <script dangerouslySetInnerHTML={{ __html: redirectScript }} />
       <noscript>
         <meta httpEquiv="refresh" content={`0; url=${assetPath(`/${defaultLocale}/`)}`} />

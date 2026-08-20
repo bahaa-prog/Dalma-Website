@@ -61,10 +61,6 @@ export default function Footer({
         </div>
         <div className="footer-bottom">
           <p className="footer-copy">{dict.copyright}</p>
-          <div className="footer-legal">
-            <a href="#">{dict.privacyPolicy}</a>
-            <a href="#">{dict.termsOfUse}</a>
-          </div>
         </div>
       </div>
     </footer>

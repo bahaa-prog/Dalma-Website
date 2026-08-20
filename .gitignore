@@ -12,7 +12,10 @@
 # Local tooling and editors
 .agents/
 .claude/
+CLAUDE.md
+AGENTS.md
 /skills/
+skills-lock.json
 .vscode/
 .idea/
 *.iml

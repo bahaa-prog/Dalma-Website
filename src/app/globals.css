@@ -305,7 +305,7 @@ input, select, textarea { font-family: inherit; }
 .hero-title .yellow { color: #fde047; }
 .hero-desc {
   font-size: 1.125rem; color: rgba(255,255,255,0.9);
-  line-height: 1.8; margin-bottom: 2rem; max-width: 36rem;
+  line-height: 1.8; margin-bottom: 2rem; max-width: 36rem; white-space: pre-line;
 }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
 
@@ -615,9 +615,6 @@ footer { background: var(--footer-bg); color: white; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
 }
 .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-.footer-legal { display: flex; gap: 1.25rem; }
-.footer-legal a { font-size: 0.75rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
-.footer-legal a:hover { color: white; }
 
 /* ═══════════════════════ MAP ═══════════════════════ */
 .map-wrapper {
@@ -862,7 +859,6 @@ footer { background: var(--footer-bg); color: white; }
   .footer-logo-lg { height: 4.75rem; }
   .footer-logo-xl { height: 5rem; }
   .footer-bottom { align-items: flex-start; }
-  .footer-legal { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
 
   .jobs-logo { height: 4rem; }
   .btn-back { padding: 0.5rem 0.75rem; }

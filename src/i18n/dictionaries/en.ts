@@ -41,7 +41,7 @@ const en: Dictionary = {
     rafqLogoAlt: "Rafq logo",
     hrLogoAlt: "Ministry of Human Resources license",
     aboutBlurb:
-      "Dalma Humanitarian City — a home that embraces people with disabilities with genuine care, believes in their abilities, and works to empower them to live a dignified life full of hope.",
+      "Dalma Humanitarian City, where genuine care meets empowerment. Enabling people with disabilities to realize their potential and live with confidence, independence and hope.",
     xLabel: "X",
     nav: {
       home: "Home",
@@ -54,8 +54,6 @@ const en: Dictionary = {
     address: "Al-Jouf, Saudi Arabia",
     email: "info@dalma.edu.sa",
     copyright: "© 2026 Dalma Humanitarian City. All rights reserved.",
-    privacyPolicy: "Privacy Policy",
-    termsOfUse: "Terms of Use",
   },
   contact: {
     label: "We'd Love to Hear From You",
@@ -75,11 +73,11 @@ const en: Dictionary = {
   home: {
     heroImgAlt: "Dalma Humanitarian City building",
     heroBadge: "Dalma Humanitarian City",
-    heroTitle: "Comprehensive Care... Empowerment That Makes an Impact",
+    heroTitle: "When Compassion Becomes a Mission",
     heroDesc:
-      "Dalma Humanitarian City is a specialized humanitarian project dedicated to the care, rehabilitation, and empowerment of people with disabilities, through an integrated system of therapeutic, rehabilitative, and educational services delivered to recognized best-practice standards — enhancing quality of life, independence, and community inclusion.",
+      "Dalma Humanitarian City is a specialized humanitarian organization committed to the care, rehabilitation, and empowerment of people with disabilities through an integrated system of therapeutic, rehabilitative, and educational services delivered in line with recognized best-practice standards.\nDHC aims to enhance quality of life, promote independence, and foster meaningful community inclusion.",
     ctaServices: "Discover Our Services",
-    ctaAbout: "About the City",
+    ctaAbout: "About Us",
 
     aboutImgAlt: "Dalma Humanitarian City team",
     aboutLabel: "Who We Are",
